@@ -1,0 +1,100 @@
+esphome:
+  name: energy_monitor
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  networks:
+  - ssid: "Network ID 1"
+    password: "Password 1"
+  - ssid: "Network ID 2"
+    password: "Password 2"
+
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Energy Monitor Fallback Hotspot"
+    password: "5Kv87xjWtgDU"
+
+captive_portal:
+
+# Enable logging
+logger:
+  level: debug
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+uart:
+  rx_pin: D4 
+  tx_pin: D3 
+  baud_rate: 9600
+  id: pzem_uart
+
+sensor:
+  - platform: pzemac
+    address: 0x02
+    current:
+      name: "Basement Fusebox: Current (Fuse 3)"
+    voltage:
+      name: "Basement Fusebox:  Voltage (Fuse 3)"
+    energy:
+      name: "Basement Fusebox: Energy (Fuse 3)"
+    power:
+      name: "Basement Fusebox: Power (Fuse 3)"
+    frequency:
+      name: "Basement Fusebox: Frequency (Fuse 3)"
+    power_factor:
+      name: "Basement Fusebox: Power Factor (Fuse 3)"
+    update_interval: 5s
+    
+
+  - platform: pzemac
+    address: 0x03
+    current:
+      name: "Shed Current (Fuse 8)"
+    voltage:
+      name: "Shed Voltage (Fuse 8)"
+    energy:
+      name: "Shed Energy (Fuse 8)"
+    power:
+      name: "Shed Power (Fuse 8)"
+    frequency:
+      name: "Shed Frequency (Fuse 8)"
+    power_factor:
+      name: "Shed Power Factor (Fuse 8)"
+    update_interval: 5s
+    
+  - platform: pzemac
+    address: 0x04
+    current:
+      name: "Boiler House Current (Fuse 2)"
+    voltage:
+      name: "Boiler House Voltage (Fuse 2)"
+    energy:
+      name: "Boiler House Energy (Fuse 2)"
+    power:
+      name: "Boiler House Power (Fuse 2)"
+    frequency:
+      name: "Boiler House Frequency (Fuse 2)"
+    power_factor:
+      name: "Boiler House Power Factor (Fuse 2)"
+    update_interval: 5s
+    
+  - platform: pzemac
+    address: 0x05
+    current:
+      name: "Car Charger Current (Fuse 10)"
+    voltage:
+      name: "Car Charger Voltage (Fuse 10)"
+    energy:
+      name: "Car Charger V3 Energy (Fuse 10)"
+    power:
+      name: "Car Charger Power (Fuse 10)"
+    frequency:
+      name: "Car Charger Frequency (Fuse 10)"
+    power_factor:
+      name: "Car Charger Power Factor (Fuse 10)"
+    update_interval: 5s
