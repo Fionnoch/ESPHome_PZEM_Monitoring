@@ -1,0 +1,20 @@
+type: entities
+entities:
+  - entity: sensor.boiler_house_current_fuse_2 #input sensor that you want to display here
+    name: Current
+  - entity: sensor.boiler_house_power_fuse_2
+    name: Power
+  - entity: sensor.boiler_house_energy_fuse_2
+    name: Energy
+  - entity: sensor.boiler_house_power_factor_fuse_2
+    name: Power Factor
+  - entity: sensor.boiler_house_frequency_fuse_2
+    name: Frequency
+  - entity: sensor.boiler_house_voltage_fuse_2
+    name: Voltage
+title: Boiler House (Fuse 2)
+header:
+  type: graph
+  entity: sensor.boiler_house_power_fuse_2
+  hours_to_show: 24
+  detail: 2
